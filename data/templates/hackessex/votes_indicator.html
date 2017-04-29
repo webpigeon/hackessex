@@ -1,0 +1,5 @@
+<!-- Use this with {% include "hackessex/votes_indicator.html" with votes=PASS_STUFF only%}
+<!-- CSS class is 'negative_votes' if less than 0, otherwise 'positive_votes' -->
+<span class="{% if votes < 0 %}negative_votes{% else %}positive_votes{% endif %}">
+    [{{votes}}]
+</span>
