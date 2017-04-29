@@ -10,21 +10,21 @@
         <!-- List each question -->
         {% for question in object_list %}
           <div class="question">
-              <h2>{{question}} {% include "hackessex/votes_indicator.html" with votes=question.votes only%}</h2> <!-- Show question text + votes -->
-              <ul class="list-inline">
-                <li><a class="btn btn-success" href="/q/vote/{{question.pk}}/up"><i class="fa fa-arrow-up" aria-hidden="true"></i></a><li>
-                <li><a class="btn btn-danger" href="/q/vote/{{question.pk}}/down"><i class="fa fa-arrow-down" aria-hidden="true"></i></a></li>
-                <li><a class="btn btn-default" href="{% url "add_ans" question=question.pk %}">Answer</a></li>
-              </ul>
+              <h2 class="item_text">{{question}} {% include "hackessex/votes_indicator.html" with votes=question.votes only%}</h2> <!-- Show question text + votes -->
+              <div class="btn-group" role="group">
+                  <a class="btn btn-success btn-sm" href="/q/vote/{{question.pk}}/up"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+                <a class="btn btn-danger btn-sm" href="/q/vote/{{question.pk}}/down"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>
+                <a class="btn btn-default btn-sm" href="{% url "add_ans" question=question.pk %}">Answer</a>
+              </div>
           </div>
 
           {% for answer in question.answer_set.all %}  <!-- Django does fancy stuff behind the scenes and aggregates all the foreign keys in the many-to-one? -->
           <div class="answer">
-              <h3>{{answer.text}} {% include "hackessex/votes_indicator.html" with votes=answer.votes only%}</h3> <!-- Show each answer's text, indented -->
-            <ul class="list-inline">
-                <li><a class="btn btn-success" href="{% url "vote_ans" answer_id=answer.pk t="up" %}"><i class="fa fa-arrow-up" aria-hidden="true"></i></a></li>
-                <li><a class="btn btn-danger" href="{% url "vote_ans" answer_id=answer.pk t="down" %}"><i class="fa fa-arrow-down" aria-hidden="true"></i></a></li>
-            </ul>
+              <h3 class="item_text">{{answer.text}} {% include "hackessex/votes_indicator.html" with votes=answer.votes only%}</h3> <!-- Show each answer's text, indented -->
+            <div class="btn-group" role="group">
+                <a class="btn btn-success btn-sm" href="{% url "vote_ans" answer_id=answer.pk t="up" %}"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+              <a class="btn btn-danger btn-sm" href="{% url "vote_ans" answer_id=answer.pk t="down" %}"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>
+            </div>
           </div>
           {% endfor %}
         {% empty %}

@@ -9,6 +9,9 @@
 }
 
 /******* Questions list ********/
+.question, .answer {
+    margin-bottom: 3%;
+}
 
 .questions_container {
     margin-bottom: 3%;
@@ -17,6 +20,10 @@
 
     overflow-y: scroll;
     height: 75vh;
+}
+
+.item_text, .list-inline {
+    display: inline;
 }
 
 /* Answer container, with up/down in it also */
