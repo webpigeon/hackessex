@@ -43,8 +43,11 @@ body{
 }
 
 /* Lets you see the text on forms */
-form textarea{
+form {
     color: black;
+}
+form label {
+    color: ghostwhite;
 }
 
 .jumbotron {
