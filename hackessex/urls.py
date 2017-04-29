@@ -14,9 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from .views import QuestionList, question_vote
+from .views import QuestionList, QuestionCreate, question_vote
 
 urlpatterns = [
     url(r'^$', QuestionList.as_view()),
+    url(r'add/', QuestionCreate.as_view()),
     url(r'vote/(?P<question_id>[0-9]+)/(?P<t>up|down)', question_vote)
 ]
