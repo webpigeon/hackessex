@@ -1,0 +1,28 @@
+<!-- question_list will always load base.html -->
+{% extends "base.html" %}
+
+<!-- Replace any other block content with this stuff -->
+{% block content %}
+    <!-- List each question -->
+    {% for question in object_list %}
+      <h1>{{question}} [{{question.votes}}]</h1> <!-- Show question text + votes -->
+      <a href="/q/vote/{{question.pk}}/up">up</a>
+      <a href="/q/vote/{{question.pk}}/down">down</a>
+
+      {% for answer in question.answer_set.all %}  <!-- Django does fancy stuff behind the scenes and aggregates all the foreign keys in the many-to-one? -->
+      <h2 style="margin-left: 5%">{{answer.text}} [{{answer.votes}}]</h2> <!-- Show each answer's text, indented -->
+      <a href="{% url "vote_ans" answer_id=answer.pk t="up" %}">up</a>
+      <a href="{% url "vote_ans" answer_id=answer.pk t="down" %}">down</a>
+      {% endfor %}
+      <a href="{% url "add_ans" %}">Answer this question</a>
+    {% empty %}
+    <h2>there are no questions</h2> <!-- There were no questions, so show that -->
+    {% endfor %}
+<<<<<<< HEAD
+    <h2> 
+    "questions" </h2>
+=======
+    <a href="{% url "add" %}">Create question</a>
+{% endblock %}
+>>>>>>> df12085df7fefbfdf7e75fbe15d6ba98f0a08e2d
+
