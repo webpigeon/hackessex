@@ -20,11 +20,15 @@ class QuestionList(ListView):
 
 class QuestionCreate(LoginRequiredMixin, CreateView):
     model = Question
-    fields = ["text", "category", "hide_id", "submitter"]
+    fields = ["text", "category", "hide_id"]
+
+    def form_valid(self, form):
+        form.instance.submitter = self.request.user
+        return super(QuestionCreate, self).form_valid(form)
 
 class AnswerCreate(LoginRequiredMixin, CreateView):
     model = Answer
-    fields = ["text", "submitter"]
+    fields = ["text"]
 
     def get_context_data(self, **kwargs):
         context = super(AnswerCreate, self).get_context_data(**kwargs)
@@ -32,6 +36,7 @@ class AnswerCreate(LoginRequiredMixin, CreateView):
         return context
 
     def form_valid(self, form):
+        form.instance.submitter = self.request.user
         form.instance.question_id = self.kwargs.get('question')
         return super(AnswerCreate, self).form_valid(form)
 
