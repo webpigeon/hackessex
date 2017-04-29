@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Question
+from .models import Question, Answer
 
 # Register models
-admin.site.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ["__str__", "votes"]
+    list_filter = ["category"]
+
+admin.site.register(Question, QuestionAdmin)
+admin.site.register(Answer)
