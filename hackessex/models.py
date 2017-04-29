@@ -12,6 +12,11 @@ class Question(models.Model):
     submitter = models.ForeignKey(settings.AUTH_USER_MODEL)
     hide_id = models.BooleanField(default=True)
 
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+        return reverse('home')
+
+
     def __str__(self):
         return self.text
 
@@ -23,6 +28,10 @@ class Answer(models.Model):
     text = models.TextField()
     votes = models.SmallIntegerField(default=0)
     submitter = models.ForeignKey(settings.AUTH_USER_MODEL)
+
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+        return reverse('home')
 
     def __str__(self):
         return self.text
