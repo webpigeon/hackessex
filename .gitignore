@@ -6,6 +6,9 @@ __pycache__/
 # Zee database
 *.sqlite3
 
+# ignore backup files
+*~
+
 # C extensions
 *.so
 
