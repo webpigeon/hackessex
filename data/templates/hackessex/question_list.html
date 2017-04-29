@@ -1,11 +1,13 @@
+<!-- question_list will always load base.html -->
 {% extends "base.html" %}
 
+<!-- Replace any other block content with this stuff -->
 {% block content %}
     <!-- List each question -->
     {% for question in object_list %}
       <h1>{{question}} - {{question.votes}}</h1> <!-- Show question text + votes -->
       {% for answer in question.answer_set.all %}  <!-- Django does fancy stuff behind the scenes and aggregates all the foreign keys in the many-to-one? -->
-      <h2 style="margin-left: 5%">{{answer.text}}</h2> <!-- Show each answer's text -->
+      <h2 style="margin-left: 5%">{{answer.text}}</h2> <!-- Show each answer's text, indented -->
       {% endfor %}
     {% empty %}
     <h2>there are no questions</h2> <!-- There were no questions, so show that -->
