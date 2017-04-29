@@ -12,6 +12,9 @@ class Question(models.Model):
     submitter = models.ForeignKey(settings.AUTH_USER_MODEL)
     hide_id = models.BooleanField()
 
+    def __unicode__(self):
+        return self.text
+
 class Answer(models.Model):
     question = models.ForeignKey(Question)
     text = models.TextField()
