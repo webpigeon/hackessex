@@ -13,7 +13,7 @@ class QuestionList(ListView):
 
 class QuestionCreate(CreateView):
     model = Question
-    fields = ["text", "votes", "category", "hide_id", "submitter"]
+    fields = ["text", "category", "hide_id", "submitter"]
 
 # vote/5/up vote/5/down
 def question_vote(request, question_id=None, t=None):
