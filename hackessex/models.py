@@ -8,7 +8,7 @@ class Question(models.Model):
     votes = models.SmallIntegerField() # Sum of up/downvotes on the question
     # Do submitter - is it account ID?
     # tags = model.ManyToManyField() For now just use category instead
-    category = model.CharField(max_length=255) # Just one category for now
+    category = models.CharField(max_length=255) # Just one category for now
     submitter = models.ForeignKey(settings.AUTH_USER_MODEL)
     hide_id = models.BooleanField()
 
@@ -17,5 +17,5 @@ class Answer(models.Model):
     text = models.TextField()
     votes = models.SmallIntegerField()
     submitter = models.ForeignKey(settings.AUTH_USER_MODEL)
-    
-	
+
+
