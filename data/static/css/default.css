@@ -39,6 +39,11 @@ body{
     color: ghostwhite;
 }
 
+/* Lets you see the text on forms */
+form {
+    color: black;
+}
+
 .jumbotron {
     background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(54).jpg")no-repeat center center fixed;
     -webkit-background-size: cover;
