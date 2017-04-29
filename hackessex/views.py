@@ -21,7 +21,7 @@ class QuestionList(ListView):
     def get_queryset(self):
         q = super(QuestionList, self).get_queryset()
         room_id = self.kwargs.get('room')
-        return q.filter(room=1)
+        return q.filter(room=room_id)
 
     def get_context_data(self, **kwargs):
         context = super(QuestionList, self).get_context_data(**kwargs)

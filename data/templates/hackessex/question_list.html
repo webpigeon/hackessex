@@ -25,6 +25,6 @@
         <h2>there are no questions</h2> <!-- There were no questions, so show that -->
         {% endfor %}
     </div>
-    <a href="{% url "add" %}">Create question</a>
+    <a href="{% url "add" room=room.pk %}">Create question</a>
 {% endblock content %}
 
