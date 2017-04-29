@@ -23,7 +23,7 @@ from .views import QuestionList, QuestionCreate, AnswerCreate, question_vote, an
 urlpatterns = [
     url(r'^$', QuestionList.as_view(), name="home"),
     url(r'add/', QuestionCreate.as_view(), name="add"),
-    url(r'add_ans/', AnswerCreate.as_view(), name="add_ans"),
+    url(r'add_ans/(?P<question>[0-9]+)', AnswerCreate.as_view(), name="add_ans"),
     url(r'vote/(?P<question_id>[0-9]+)/(?P<t>up|down)', question_vote, name="vote"),
     url(r'vote_ans/(?P<answer_id>[0-9]+)/(?P<t>up|down)', answer_vote, name="vote_ans")
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

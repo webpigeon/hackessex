@@ -14,7 +14,7 @@
       <a href="{% url "vote_ans" answer_id=answer.pk t="up" %}">up</a>
       <a href="{% url "vote_ans" answer_id=answer.pk t="down" %}">down</a>
       {% endfor %}
-      <a href="{% url "add_ans" %}">Answer this question</a>
+      <a href="{% url "add_ans" question=question.pk %}">Answer this question</a>
     {% empty %}
     <h2>there are no questions</h2> <!-- There were no questions, so show that -->
     {% endfor %}
