@@ -21,7 +21,7 @@ class Question(models.Model):
 class Answer(models.Model):
     question = models.ForeignKey(Question)
     text = models.TextField()
-    votes = models.SmallIntegerField()
+    votes = models.SmallIntegerField(default=0)
     submitter = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     def __str__(self):
