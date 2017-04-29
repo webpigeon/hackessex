@@ -1,0 +1,28 @@
+/* Title */
+.title {
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+}
+
+/******* Questions list ********/
+
+.questions_container {
+    margin-bottom: 3%;
+}
+
+/* Answer container, with up/down in it also */
+.answer {
+    margin-left: 5%;
+}
+/* Vote span when votes are negative */
+.negative_votes {
+    color: firebrick;
+}
+/* Vote span when votes are positive */
+.positive_votes {
+    color: limegreen;
+}
