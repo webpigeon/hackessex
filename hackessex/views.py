@@ -20,12 +20,18 @@ class QuestionList(ListView):
 
     def get_queryset(self):
         q = super(QuestionList, self).get_queryset()
-        room_id = self.kwargs.get('room')
-        return q.filter(room=room_id)
+        try:
+            room_id = int(self.kwargs.get('room'))
+            if room_id < 0:
+                return q.filter(room=abs(room_id), hidden=True)
+            else:
+                return q.filter(room=room_id, hidden=False)
+        except ValueError:
+            return HttpResponse("that is not a valid room number")
 
     def get_context_data(self, **kwargs):
         context = super(QuestionList, self).get_context_data(**kwargs)
-        context['room'] = get_object_or_404(Room, pk=self.kwargs.get('room'))
+        context['room'] = get_object_or_404(Room, pk=abs(int(self.kwargs.get('room'))))
         return context
 
 class QuestionCreate(LoginRequiredMixin, CreateView):

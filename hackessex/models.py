@@ -18,6 +18,7 @@ class Question(models.Model):
     submitter = models.ForeignKey(settings.AUTH_USER_MODEL)
     room = models.ForeignKey(Room, null=True)
     hide_id = models.BooleanField(default=True)
+    hidden = models.BooleanField(default=False)
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse

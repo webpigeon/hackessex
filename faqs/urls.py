@@ -20,6 +20,8 @@ import hackessex.views
 
 urlpatterns = [
     url(r'^$', hackessex.views.Home),
+    url('^', include('django.contrib.auth.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^q/', include('hackessex.urls'))
 ]
+

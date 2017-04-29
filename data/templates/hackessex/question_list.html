@@ -1,6 +1,8 @@
 <!-- question_list will always load base.html -->
 {% extends "base.html" %}
 
+{% block subpage %} :: {{room.name}}{% endblock subpage %}
+
 <!-- NOTE: atm these styles are hardcoded - we'll be using the CSS when that happens -->
 <!-- Replace any other block content with this stuff -->
 {% block content %}
@@ -9,22 +11,26 @@
         {% for question in object_list %}
           <div class="question">
               <h2>{{question}} {% include "hackessex/votes_indicator.html" with votes=question.votes only%}</h2> <!-- Show question text + votes -->
-              <a href="/q/vote/{{question.pk}}/up">up</a>
-              <a href="/q/vote/{{question.pk}}/down">down</a>
-              <a href="{% url "add_ans" question=question.pk %}">Answer this question</a>
+              <ul class="list-inline">
+                <li><a class="btn btn-success" href="/q/vote/{{question.pk}}/up">up</a><li>
+                <li><a class="btn btn-danger" href="/q/vote/{{question.pk}}/down">down</a></li>
+                <li><a class="btn btn-default" href="{% url "add_ans" question=question.pk %}">Answer</a></li>
+              </ul>
           </div>
 
           {% for answer in question.answer_set.all %}  <!-- Django does fancy stuff behind the scenes and aggregates all the foreign keys in the many-to-one? -->
           <div class="answer">
               <h3>{{answer.text}} {% include "hackessex/votes_indicator.html" with votes=answer.votes only%}</h3> <!-- Show each answer's text, indented -->
-              <a href="{% url "vote_ans" answer_id=answer.pk t="up" %}">up</a>
-              <a href="{% url "vote_ans" answer_id=answer.pk t="down" %}">down</a>
+            <ul class="list-inline">
+              <li><a class="btn btn-success" href="{% url "vote_ans" answer_id=answer.pk t="up" %}">up</a></li>
+              <li><a class="btn btn-danger" href="{% url "vote_ans" answer_id=answer.pk t="down" %}">down</a></li>
+            </ul>
           </div>
           {% endfor %}
         {% empty %}
         <h2>there are no questions</h2> <!-- There were no questions, so show that -->
         {% endfor %}
     </div>
-    <a href="{% url "add" room=room.pk %}">Create question</a>
+    <a class="btn btn-default" href="{% url "add" room=room.pk %}">Create question</a>
 {% endblock content %}
 
