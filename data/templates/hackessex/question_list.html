@@ -19,7 +19,9 @@
   </head>
   <body>
     {% for question in object_list %}
-    <h1>{{question}}</h1>
+      <h1>{{question}}</h1>
+    {% empty %}
+    <h2>there are no questions</h2>
     {% endfor %}
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
