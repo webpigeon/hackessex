@@ -12,6 +12,8 @@
 
 .questions_container {
     margin-bottom: 3%;
+    background-color: rgba(68, 68, 68, 0.3);
+    padding: 1%;
 }
 
 /* Answer container, with up/down in it also */
@@ -25,4 +27,47 @@
 /* Vote span when votes are positive */
 .positive_votes {
     color: limegreen;
+}
+
+body{
+    background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(54).jpg")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    color: ghostwhite;
+}
+
+.jumbotron {
+    background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(54).jpg")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #ffffff;
+}
+.navbar {
+    margin-bottom: 0;
+    background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(54).jpg")no-repeat center center fixed;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px ;
+    line-height: 1.42857143;
+    letter-spacing: 4px;
+    border-radius: 0;
+}
+
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #f4511e !important;
+    background-color: #fff;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff ;
 }

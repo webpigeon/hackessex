@@ -8,7 +8,7 @@
         <!-- List each question -->
         {% for question in object_list %}
           <div class="question">
-              <h1>{{question}} {% include "hackessex/votes_indicator.html" with votes=question.votes only%}</h1> <!-- Show question text + votes -->
+              <h2>{{question}} {% include "hackessex/votes_indicator.html" with votes=question.votes only%}</h2> <!-- Show question text + votes -->
               <a href="/q/vote/{{question.pk}}/up">up</a>
               <a href="/q/vote/{{question.pk}}/down">down</a>
               <a href="{% url "add_ans" question=question.pk %}">Answer this question</a>
@@ -16,7 +16,7 @@
 
           {% for answer in question.answer_set.all %}  <!-- Django does fancy stuff behind the scenes and aggregates all the foreign keys in the many-to-one? -->
           <div class="answer">
-              <h2>{{answer.text}} {% include "hackessex/votes_indicator.html" with votes=answer.votes only%}</h2> <!-- Show each answer's text, indented -->
+              <h3>{{answer.text}} {% include "hackessex/votes_indicator.html" with votes=answer.votes only%}</h3> <!-- Show each answer's text, indented -->
               <a href="{% url "vote_ans" answer_id=answer.pk t="up" %}">up</a>
               <a href="{% url "vote_ans" answer_id=answer.pk t="down" %}">down</a>
           </div>
