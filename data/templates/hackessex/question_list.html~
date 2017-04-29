@@ -1,7 +1,6 @@
 <!-- question_list will always load base.html -->
 {% extends "base.html" %}
 
-<!-- NOTE: atm these styles are hardcoded - we'll be using the CSS when that happens -->
 <!-- Replace any other block content with this stuff -->
 {% block content %}
     <!-- List each question -->
@@ -19,9 +18,11 @@
     {% empty %}
     <h2>there are no questions</h2> <!-- There were no questions, so show that -->
     {% endfor %}
-    
+<<<<<<< HEAD
     <h2> 
     "questions" </h2>
+=======
     <a href="{% url "add" %}">Create question</a>
-{% endblock content %}
+{% endblock %}
+>>>>>>> df12085df7fefbfdf7e75fbe15d6ba98f0a08e2d
 
