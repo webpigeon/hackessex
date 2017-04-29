@@ -12,8 +12,11 @@
 
 .questions_container {
     margin-bottom: 3%;
-    background-color: rgba(68, 68, 68, 0.3);
+    background-color: rgba(68, 68, 68, 0.5);
     padding: 1%;
+
+    overflow-y: scroll;
+    height: 75vh;
 }
 
 /* Answer container, with up/down in it also */
@@ -42,6 +45,9 @@ body{
 /* Lets you see the text on forms */
 form {
     color: black;
+}
+form label {
+    color: ghostwhite;
 }
 
 .jumbotron {
