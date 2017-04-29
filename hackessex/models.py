@@ -15,6 +15,9 @@ class Question(models.Model):
     def __str__(self):
         return self.text
 
+    class Meta:
+        ordering = ["-votes"]
+
 class Answer(models.Model):
     question = models.ForeignKey(Question)
     text = models.TextField()
@@ -23,3 +26,7 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.text
+
+    class Meta:
+        ordering = ["-votes"]
+

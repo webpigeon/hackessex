@@ -14,10 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from .views import QuestionList, QuestionCreate, question_vote
+from .views import QuestionList, QuestionCreate, AnswerCreate, question_vote, answer_vote
 
 urlpatterns = [
-    url(r'^$', QuestionList.as_view()),
-    url(r'add/', QuestionCreate.as_view()),
-    url(r'vote/(?P<question_id>[0-9]+)/(?P<t>up|down)', question_vote)
+    url(r'^$', QuestionList.as_view(), name="home"),
+    url(r'add/', QuestionCreate.as_view(), name="add"),
+    url(r'add_ans/', AnswerCreate.as_view(), name="add_ans"),
+    url(r'vote/(?P<question_id>[0-9]+)/(?P<t>up|down)', question_vote, name="vote"),
+    url(r'vote_ans/(?P<answer_id>[0-9]+)/(?P<t>up|down)', answer_vote, name="vote_ans")
 ]
