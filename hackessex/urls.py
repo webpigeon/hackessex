@@ -13,8 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import url
+from django.conf.urls.static import static
+
 from .views import QuestionList, QuestionCreate, AnswerCreate, question_vote, answer_vote
+
 
 urlpatterns = [
     url(r'^$', QuestionList.as_view(), name="home"),
@@ -22,4 +26,4 @@ urlpatterns = [
     url(r'add_ans/', AnswerCreate.as_view(), name="add_ans"),
     url(r'vote/(?P<question_id>[0-9]+)/(?P<t>up|down)', question_vote, name="vote"),
     url(r'vote_ans/(?P<answer_id>[0-9]+)/(?P<t>up|down)', answer_vote, name="vote_ans")
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
