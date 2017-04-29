@@ -16,7 +16,10 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+import hackessex.views
+
 urlpatterns = [
+    url(r'^$', hackessex.views.Home),
     url(r'^admin/', admin.site.urls),
     url(r'^q/', include('hackessex.urls'))
 ]

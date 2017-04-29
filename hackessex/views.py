@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.http import HttpResponse
 
 from django.views.generic.list import ListView
@@ -7,6 +7,9 @@ from django.views.generic.edit import CreateView
 from django.shortcuts import get_object_or_404
 
 from .models import Question, Answer
+
+def Home(request):
+    return render_to_response("home.html")
 
 class QuestionList(ListView):
     model = Question
