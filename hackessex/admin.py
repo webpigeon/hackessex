@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Question, Answer
+from .models import Room, Question, Answer
 
 # Register models
 class QuestionAdmin(admin.ModelAdmin):
@@ -7,4 +7,5 @@ class QuestionAdmin(admin.ModelAdmin):
     list_filter = ["category"]
 
 admin.site.register(Question, QuestionAdmin)
+admin.site.register(Room)
 admin.site.register(Answer)

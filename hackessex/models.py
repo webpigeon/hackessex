@@ -21,7 +21,7 @@ class Question(models.Model):
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
-        return reverse('home')
+        return reverse('home', kwargs={"room": self.room.pk})
 
 
     def __str__(self):
@@ -38,7 +38,7 @@ class Answer(models.Model):
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
-        return reverse('home')
+        return reverse('home', kwargs={"room": self.question.room.pk})
 
     def __str__(self):
         return self.text
