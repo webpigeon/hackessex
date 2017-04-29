@@ -18,6 +18,15 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+      .negative_votes{
+        color: firebrick;
+      }
+      .positive_votes{
+        color: limegreen;
+      }
+    </style>
   </head>
   <body>
 	<p class="title"
@@ -27,6 +36,12 @@
     {% block content %}
     {% endblock %}
     </div>
+
+    {% block footer %}
+    <div class="footer">
+        Worked on by: Joseph Walton-Rivers, Daniel Gomme, Chloe Skillman, Iulia Petria
+    </div>
+    {% endblock %}
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
