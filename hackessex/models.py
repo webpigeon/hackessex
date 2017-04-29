@@ -12,7 +12,7 @@ class Question(models.Model):
     submitter = models.ForeignKey(settings.AUTH_USER_MODEL)
     hide_id = models.BooleanField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.text
 
 class Answer(models.Model):
@@ -21,4 +21,5 @@ class Answer(models.Model):
     votes = models.SmallIntegerField()
     submitter = models.ForeignKey(settings.AUTH_USER_MODEL)
 
-
+    def __str__(self):
+        return self.text
