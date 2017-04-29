@@ -11,7 +11,7 @@
       <a href="/q/vote/{{question.pk}}/down">down</a>
 
       {% for answer in question.answer_set.all %}  <!-- Django does fancy stuff behind the scenes and aggregates all the foreign keys in the many-to-one? -->
-      <h2 style="margin-left: 5%">{{answer.text}} {% include "hackessex/votes_indicator.html" with votes=question.votes only%}</h2> <!-- Show each answer's text, indented -->
+      <h2 style="margin-left: 5%">{{answer.text}} {% include "hackessex/votes_indicator.html" with votes=answer.votes only%}</h2> <!-- Show each answer's text, indented -->
       <a href="{% url "vote_ans" answer_id=answer.pk t="up" %}">up</a>
       <a href="{% url "vote_ans" answer_id=answer.pk t="down" %}">down</a>
       {% endfor %}
