@@ -18,10 +18,14 @@
     <![endif]-->
   </head>
   <body>
+    <!-- List each question -->
     {% for question in object_list %}
-      <h1>{{question}}</h1>
+      <h1>{{question}} - {{question.votes}}</h1> <!-- Show question text + votes -->
+      {% for answer in question.answer_set.all %}
+      <h2 style="margin-left: 5%">{{answer.text}}</h2> <!-- Show each answer's text -->
+      {% endfor %}
     {% empty %}
-    <h2>there are no questions</h2>
+    <h2>there are no questions</h2> <!-- There were no questions, so show that -->
     {% endfor %}
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
