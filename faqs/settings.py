@@ -127,6 +127,10 @@ STATICFILES_DIRS = [
     os.path.join(DATA_DIR, "static"),
 ]
 
+# Auth nonsense
+LOGIN_URL = "/registration/login"
+LOGIN_REDIRECT_URL = "/"
+
 # Django channels
 # In memory routing for now...
 CHANNEL_LAYERS = {

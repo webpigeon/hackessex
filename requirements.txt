@@ -9,7 +9,6 @@ daphne==1.2.0
 Django==1.11
 incremental==16.10.1
 packaging==16.8
-pkg-resources==0.0.0
 pytz==2017.2
 six==1.10.0
 Twisted==17.1.0
