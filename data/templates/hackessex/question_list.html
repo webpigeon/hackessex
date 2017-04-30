@@ -1,25 +1,36 @@
 <!-- question_list will always load base.html -->
 {% extends "base.html" %}
 
+{% block subpage %} :: {{room.name}}{% endblock subpage %}
+
 <!-- NOTE: atm these styles are hardcoded - we'll be using the CSS when that happens -->
 <!-- Replace any other block content with this stuff -->
 {% block content %}
-    <!-- List each question -->
-    {% for question in object_list %}
-      <h1>{{question}} {% include "hackessex/votes_indicator.html" with votes=question.votes only%}</h1> <!-- Show question text + votes -->
-      <a href="/q/vote/{{question.pk}}/up">up</a>
-      <a href="/q/vote/{{question.pk}}/down">down</a>
+    <div class="questions_container">
+        <!-- List each question -->
+        {% for question in object_list %}
+          <div class="question">
+              <h2 class="item_text">{{question}} {% include "hackessex/votes_indicator.html" with votes=question.votes only%}</h2> <!-- Show question text + votes -->
+              <div class="btn-group" role="group">
+                  <a class="btn btn-success btn-sm" href="/q/vote/{{question.pk}}/up"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+                <a class="btn btn-danger btn-sm" href="/q/vote/{{question.pk}}/down"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>
+                <a class="btn btn-default btn-sm" href="{% url "add_ans" question=question.pk %}">Answer</a>
+              </div>
+          </div>
 
-      {% for answer in question.answer_set.all %}  <!-- Django does fancy stuff behind the scenes and aggregates all the foreign keys in the many-to-one? -->
-      <h2 style="margin-left: 5%">{{answer.text}} {% include "hackessex/votes_indicator.html" with votes=answer.votes only%}</h2> <!-- Show each answer's text, indented -->
-      <a href="{% url "vote_ans" answer_id=answer.pk t="up" %}">up</a>
-      <a href="{% url "vote_ans" answer_id=answer.pk t="down" %}">down</a>
-      {% endfor %}
-      <a href="{% url "add_ans" question=question.pk %}">Answer this question</a>
-    {% empty %}
-    <h2>there are no questions</h2> <!-- There were no questions, so show that -->
-    {% endfor %}
-    
-    <a href="{% url "add" %}">Create question</a>
+          {% for answer in question.answer_set.all %}  <!-- Django does fancy stuff behind the scenes and aggregates all the foreign keys in the many-to-one? -->
+          <div class="answer">
+              <h3 class="item_text">{{answer.text}} {% include "hackessex/votes_indicator.html" with votes=answer.votes only%}</h3> <!-- Show each answer's text, indented -->
+            <div class="btn-group" role="group">
+                <a class="btn btn-success btn-sm" href="{% url "vote_ans" answer_id=answer.pk t="up" %}"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+              <a class="btn btn-danger btn-sm" href="{% url "vote_ans" answer_id=answer.pk t="down" %}"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          {% endfor %}
+        {% empty %}
+        <h2>there are no questions</h2> <!-- There were no questions, so show that -->
+        {% endfor %}
+    </div>
+    <a class="btn btn-default" href="{% url "add" room=room.pk %}">Create question</a>
 {% endblock content %}
 
