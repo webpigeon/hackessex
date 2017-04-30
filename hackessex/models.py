@@ -1,10 +1,26 @@
+import json
 from django.conf import settings
 from django.db import models
+from channels import Group
 
 class Room(models.Model):
     name = models.CharField(max_length=65)
     description = models.TextField(blank=True, null=True)
     submitter = models.ForeignKey(settings.AUTH_USER_MODEL)
+
+    @property
+    def websocket_group(self):
+        return Group("room-%s" % self.pk)
+
+    def send_notification(self, question):
+        notification = {
+            "pk": self.question,
+            "text": self.text,
+            "votes": self.votes
+        }
+        self.websocket_group.send(
+            {"text": json.dumps(notification)}
+        )
 
     def __str__(self):
         return self.name
@@ -23,7 +39,11 @@ class Question(models.Model):
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
         return reverse('home', kwargs={"room": self.room.pk})
-
+    
+    def save(self, *args, **kwargs):
+        result = super(Question, self).save(*args, **kwargs)
+        self.room.send_notification(self)
+        return result
 
     def __str__(self):
         return self.text

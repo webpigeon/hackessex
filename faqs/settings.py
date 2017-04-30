@@ -126,3 +126,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(DATA_DIR, "static"),
 ]
+
+# Django channels
+# In memory routing for now...
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        "ROUTING": "faqs.routing.channel_routing",
+    },
+}
