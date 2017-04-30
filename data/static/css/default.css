@@ -1,0 +1,91 @@
+/* Title */
+.title {
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+}
+
+/******* Questions list ********/
+.question, .answer {
+    margin-bottom: 3%;
+}
+
+.questions_container {
+    margin-bottom: 3%;
+    background-color: rgba(68, 68, 68, 0.5);
+    padding: 1%;
+
+    overflow-y: scroll;
+    height: 75vh;
+}
+
+.item_text, .list-inline {
+    display: inline;
+}
+
+/* Answer container, with up/down in it also */
+.answer {
+    margin-left: 5%;
+}
+/* Vote span when votes are negative */
+.negative_votes {
+    color: firebrick;
+}
+/* Vote span when votes are positive */
+.positive_votes {
+    color: limegreen;
+}
+
+body{
+    background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(54).jpg")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    color: ghostwhite;
+}
+
+/* Lets you see the text on forms */
+form {
+    color: black;
+}
+form label {
+    color: ghostwhite;
+}
+
+.jumbotron {
+    background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(54).jpg")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #ffffff;
+}
+.navbar {
+    margin-bottom: 0;
+    background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(54).jpg")no-repeat center center fixed;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px ;
+    line-height: 1.42857143;
+    letter-spacing: 4px;
+    border-radius: 0;
+}
+
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #f4511e !important;
+    background-color: #fff;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff ;
+}
