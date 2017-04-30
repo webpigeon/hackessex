@@ -19,7 +19,7 @@ from django.contrib import admin
 import hackessex.views
 
 urlpatterns = [
-    url(r'^$', hackessex.views.Home),
+    url(r'^$', hackessex.views.Home.as_view()),
     url('^', include('django.contrib.auth.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^q/', include('hackessex.urls'))

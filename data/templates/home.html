@@ -42,8 +42,8 @@
   </div>
 </nav>
  <div class="jumbotron text-center">
-  <h1>Name</h1>
-  <p>We ... blablabla</p>
+  <h1>Quest For Questions</h1>
+  <p>Rooms: {% for room in object_list %}{{room.pk}}, {% endfor %}</p>
   <form class="form-inline">
     <div class="input-group">
       <input type="text" class="form-control" size="50" placeholder="Search" required>
