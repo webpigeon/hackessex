@@ -14,9 +14,9 @@ class Room(models.Model):
 
     def send_notification(self, question):
         notification = {
-            "pk": self.question,
-            "text": self.text,
-            "votes": self.votes
+            "pk": question.pk,
+            "body": question.text,
+            "votes": question.votes
         }
         self.websocket_group.send(
             {"text": json.dumps(notification)}

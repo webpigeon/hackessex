@@ -3,13 +3,32 @@
 
 {% block subpage %} :: {{room.name}}{% endblock subpage %}
 
+{% block head %}
+  {% load staticfiles %}
+  <script type="text/javascript" src="{% static "channels/js/websocketbridge.js" %}"></script>
+
+  <script type="text/javascript">
+    const webSocketBridge = new channels.WebSocketBridge();
+    webSocketBridge.connect('/faqs/{{room.pk}}/stream/');
+    webSocketBridge.socket.addEventListener('open', function() {
+        console.log("Connected to WebSocket");
+    });
+    webSocketBridge.listen(function(action, stream) {
+        const vote = $("#question-"+action.pk+" .votes");
+        vote.text(" "+action.votes+" ");
+        vote.effect( "highlight" );
+        console.log(action,stream);
+    });
+  </script>
+{% endblock head %}
+
 <!-- NOTE: atm these styles are hardcoded - we'll be using the CSS when that happens -->
 <!-- Replace any other block content with this stuff -->
 {% block content %}
     <div class="questions_container">
         <!-- List each question -->
         {% for question in object_list %}
-          <div class="question">
+          <div class="question" id="question-{{question.pk}}">
               <h2 class="item_text">{{question}} {% include "hackessex/votes_indicator.html" with votes=question.votes only%}</h2> <!-- Show question text + votes -->
               <div class="btn-group" role="group">
                   <a class="btn btn-success btn-sm" href="/q/vote/{{question.pk}}/up"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
