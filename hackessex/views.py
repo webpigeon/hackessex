@@ -12,7 +12,12 @@ from django.shortcuts import get_object_or_404
 
 from .models import Room, Question, Answer
 
-def Home(request):
+class Home(ListView):
+    model = Room
+    template_name="home.html"
+
+def Home2(request):
+    model = Room
     return render_to_response("home.html")
 
 class QuestionList(ListView):
