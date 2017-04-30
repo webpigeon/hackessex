@@ -128,7 +128,7 @@ STATICFILES_DIRS = [
 ]
 
 # Auth nonsense
-LOGIN_URL = "/registration/login"
+LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/"
 
 # Django channels

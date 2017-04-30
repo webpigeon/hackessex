@@ -23,5 +23,5 @@ ADD . /home/django/website/
 
 EXPOSE 8000
 VOLUME ["/home/django/website/var/uploads", "/home/django/website/var/static"]
-CMD ["daphne", "faqs.asgi:channel_layer"]
+CMD ["./manage.py", "runserver", "0.0.0.0:8000"]
 
